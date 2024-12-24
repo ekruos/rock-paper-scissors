@@ -9,15 +9,67 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    choice = prompt("Select rock, paper or scissors: ");
-    return choice;
+//function playGame() {
+humanScore = 0;
+computerScore = 0;
+count = 0;
+
+const body = document.querySelector("body");
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+rock.addEventListener('click', () => {
+    computerChoice = getComputerChoice();
+    playRound("rock", computerChoice);
+    count++;
+    if (count === 5) {
+        finalResult();
+    }
+});
+
+paper.addEventListener('click', () => {
+    computerChoice = getComputerChoice();
+    playRound("paper", computerChoice);
+    count++;
+    if (count === 5) {
+        finalResult();
+    }
+});
+
+scissors.addEventListener('click', () => {
+    computerChoice = getComputerChoice();
+    playRound("scissors", computerChoice);
+    count++;
+    if (count === 5) {
+        finalResult();
+    }
+});
+
+const situation = document.createElement("div");
+const result = document.createElement("div");
+
+situation.setAttribute("style", "color: rgb(188, 182, 182); font-size: 36px; text-align: center; margin-bottom: 50px;");
+
+
+function finalResult() {
+    body.appendChild(result);
+    if (humanScore > computerScore) {
+        result.textContent = (`You won ${humanScore}-${computerScore}!`);
+        result.setAttribute("style", "font-size: 70px; text-align: center; color: green;");
+
+    } else if (humanScore < computerScore) {
+        result.textContent = (`You lost ${humanScore}-${computerScore} :(`);
+        result.setAttribute("style", "font-size: 70px; text-align: center; color: red;");
+    } else {
+        result.textContent = (`The game ended in a tie ${humanScore}-${computerScore}.`);
+        result.setAttribute("style", "font-size: 70px; text-align: center; color: white;");
+    }
 }
 
-function playGame() {
-    humanScore = 0;
-    computerScore = 0;
 
+
+    /*
     for (let i = 0; i < 5; i++) {
         humanChoice = getHumanChoice();
         computerChoice = getComputerChoice();
@@ -33,43 +85,44 @@ function playGame() {
     } else {
         console.log(`The game ended in a tie ${humanScore}-${computerScore}.`);
     }
+    */
 
     function playRound(humanChoice, computerChoice) { 
         humanChoice = humanChoice.toLowerCase();
-    
+        body.appendChild(situation);
         if (humanChoice === "rock") {
             if (computerChoice === "rock") {
-                console.log("It's a tie!");
+                situation.textContent = "It's a tie!";
             } else if (computerChoice === "scissors") {
                 humanScore++;
-                console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
+                situation.textContent = "You win! Rock beats scissors!"
             } else {
                 computerScore++;
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+                situation.textContent = "You lose! Rock loses to paper!";
             }
         } else if (humanChoice === "paper") {
             if (computerChoice === "paper") {
-                console.log("It's a tie!");
+                situation.textContent = "It's a tie!";
             } else if (computerChoice === "rock") {
                 humanScore++;
-                console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
+                situation.textContent = "You win! Paper beats rock!";
             } else {
                 computerScore++;
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+                situation.textContent = "You lose! Paper loses to scissors!";
             }
         } else {
             if (computerChoice === "scissors") {
-                console.log("It's a tie!");
+                situation.textContent = "It's a tie!";
             } else if (computerChoice === "paper") {
                 humanScore++;
-                console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
+                situation.textContent = "You win! Scissors beats paper!";
             } else {
                 computerScore++;
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
+                situation.textContent = "You lose! Scissors loses to rock!";
             }
         }
     }
-}
+//}
 
-playGame();
+//playGame();
 
