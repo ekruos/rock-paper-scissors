@@ -9,7 +9,6 @@ function getComputerChoice() {
     }
 }
 
-//function playGame() {
 humanScore = 0;
 computerScore = 0;
 count = 0;
@@ -25,6 +24,7 @@ rock.addEventListener('click', () => {
     count++;
     if (count === 5) {
         finalResult();
+        addRefreashButton();
     }
 });
 
@@ -34,6 +34,7 @@ paper.addEventListener('click', () => {
     count++;
     if (count === 5) {
         finalResult();
+        addRefreashButton();
     }
 });
 
@@ -43,6 +44,7 @@ scissors.addEventListener('click', () => {
     count++;
     if (count === 5) {
         finalResult();
+        addRefreashButton();
     }
 });
 
@@ -50,7 +52,6 @@ const situation = document.createElement("div");
 const result = document.createElement("div");
 
 situation.setAttribute("style", "color: rgb(188, 182, 182); font-size: 36px; text-align: center; margin-bottom: 50px;");
-
 
 function finalResult() {
     body.appendChild(result);
@@ -62,9 +63,22 @@ function finalResult() {
         result.textContent = (`You lost ${humanScore}-${computerScore} :(`);
         result.setAttribute("style", "font-size: 70px; text-align: center; color: red;");
     } else {
-        result.textContent = (`The game ended in a tie ${humanScore}-${computerScore}.`);
+        result.textContent = (`The match ended in a tie ${humanScore}-${computerScore}.`);
         result.setAttribute("style", "font-size: 70px; text-align: center; color: white;");
     }
+}
+function addRefreashButton() {
+    const refreashContainer = document.createElement("div");
+    refreashContainer.setAttribute("style", "display: flex; justify-content: center; align-items: center;")
+    const refreash = document.createElement("button");
+    body.appendChild(refreashContainer);
+    refreashContainer.appendChild(refreash);
+    refreash.textContent = "Play a new match";
+    refreash.setAttribute("style", "color: green; margin-top: 50px; display: flex; justify-content: center; align-items: center; width: 200px; height: 80px; background-color: black; border: solid 2px white; border-radius: 10px; font-size: 20px;");
+    refreash.addEventListener("click", () => {
+        location.reload();
+    });
+
 }
 
 
