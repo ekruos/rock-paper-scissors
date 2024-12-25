@@ -74,7 +74,7 @@ function addRefreashButton() {
     body.appendChild(refreashContainer);
     refreashContainer.appendChild(refreash);
     refreash.textContent = "Play a new match";
-    refreash.setAttribute("style", "color: green; margin-top: 50px; display: flex; justify-content: center; align-items: center; width: 200px; height: 80px; background-color: black; border: solid 2px white; border-radius: 10px; font-size: 20px;");
+    refreash.setAttribute("style", "color: green; margin-top: 50px; display: flex; justify-content: center; align-items: center; width: 200px; height: 60px; background-color: yellow; border: solid 2px white; border-radius: 10px; font-size: 20px; font-weight: bold;");
     refreash.addEventListener("click", () => {
         location.reload();
     });
