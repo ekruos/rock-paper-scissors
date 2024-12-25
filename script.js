@@ -56,11 +56,11 @@ situation.setAttribute("style", "color: rgb(51, 227, 227); font-size: 40px; text
 function finalResult() {
     body.appendChild(result);
     if (humanScore > computerScore) {
-        result.textContent = (`You won ${humanScore}-${computerScore}!`);
+        result.textContent = (`You won the match ${humanScore}-${computerScore}!`);
         result.setAttribute("style", "font-size: 70px; text-align: center; color: green;");
 
     } else if (humanScore < computerScore) {
-        result.textContent = (`You lost ${humanScore}-${computerScore}.`);
+        result.textContent = (`You lost the match ${humanScore}-${computerScore}.`);
         result.setAttribute("style", "font-size: 70px; text-align: center; color: red;");
     } else {
         result.textContent = (`The match ended in a tie ${humanScore}-${computerScore}.`);
